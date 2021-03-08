@@ -8,8 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.0.8",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "next": "^10.0.8",
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^3.13.2",
+    "ra-data-simple-rest": "^3.10.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "react-admin": "^3.13.2"
   }
 }
