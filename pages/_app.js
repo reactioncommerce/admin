@@ -1,7 +1,9 @@
-import '../styles/globals.css'
+import dynamic from "next/dynamic"
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+const AdminHome = dynamic(() => import("./admin.js"), {
+  ssr: false,
+})
 
-export default MyApp
+const HomePage = () => <AdminHome />
+
+export default HomePage;
