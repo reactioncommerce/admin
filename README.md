@@ -1,6 +1,6 @@
 
 ## Admin
-
+React application for managing Reaction Commerce stores.
 ## Getting Started
 
 First, run the development server:
