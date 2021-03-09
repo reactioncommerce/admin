@@ -45,8 +45,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - reaction-admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
-            - reaction-admin-v3-node-modules-{{ .Branch }}
+            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - admin-v3-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests
           command: npm run test
