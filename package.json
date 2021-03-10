@@ -6,13 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-<<<<<<< HEAD
-    "test": "jest",
-    "lint": "eslint ."
-=======
     "lint": "eslint .",
     "test": "jest"
->>>>>>> chore:adding eslint
   },
   "dependencies": {
     "@reactioncommerce/api-utils": "^1.16.0",
@@ -41,23 +36,6 @@
     "jest": "^26.6.3",
     "react-admin": "^3.13.2"
   },
-<<<<<<< HEAD
-  "description": "## Getting Started",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/reactioncommerce/admin.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/reactioncommerce/admin/issues"
-  },
-  "homepage": "https://github.com/reactioncommerce/admin#readme"
-=======
   "eslintConfig": {
     "extends": "@reactioncommerce",
     "globals": {
@@ -82,5 +60,4 @@
       "node/no-unpublished-require": "off"
     }
   }
->>>>>>> chore:adding eslint
 }
