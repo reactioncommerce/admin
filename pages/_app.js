@@ -1,9 +1,14 @@
-import dynamic from "next/dynamic"
+import "../styles/globals.css";
+import dynamic from "next/dynamic";
 
+/**
+ * Initial setup of admin home.
+ * @returns {Component} initial Admin component
+ */
 const AdminHome = dynamic(() => import("./admin.js"), {
-  ssr: false,
-})
+  ssr: false
+});
 
-const HomePage = () => <AdminHome />
+const HomePage = () => <AdminHome />;
 
 export default HomePage;
