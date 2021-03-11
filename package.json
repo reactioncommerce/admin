@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "eslint": "^7.21.0",
     "next": "^10.0.8",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.13.2",
