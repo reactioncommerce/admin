@@ -3,10 +3,8 @@
 
 ## Getting Started
 
-First, run the development server:
+First, run the server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm start
 ```
