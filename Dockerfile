@@ -1,0 +1,15 @@
+FROM node:14
+
+ENV APP_SOURCE_DIR /usr/local/src/appsrc
+
+WORKDIR $APP_SOURCE_DIR
+
+COPY package.json . $APP_SOURCE_DIR
+
+RUN npm install
+
+COPY . $APP_SOURCE_DIR
+
+RUN npm run build
+
+CMD ["npm", "run", "start"]

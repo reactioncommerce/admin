@@ -1,0 +1,30 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "extends": [
+      "@reactioncommerce",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "globals": {
+        "Alerts": true,
+        "Assets": true,
+        "jasmine": true,
+        "jest/globals": true,
+        "Package": true
+      },
+      "rules": {
+        "jsx-a11y/label-has-for": "off",
+        "node/no-missing-import": "off",
+        "node/no-missing-require": "off",
+        "node/no-unsupported-features/es-syntax": "off",
+        "node/no-unpublished-import": "off",
+        "node/no-unpublished-require": "off",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"]
+      }
+  }
