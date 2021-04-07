@@ -23,9 +23,9 @@ function App(){
   return (
     <div id="app">
       <AuthenticationProvider {...authenticationProviderProps}>
-        {/* <OidcSecure> */}
+        <OidcSecure>
           <Admin dataProvider={dataProvider} />
-        {/* </OidcSecure> */}
+        </OidcSecure>
       </AuthenticationProvider>
     </div>
   );
