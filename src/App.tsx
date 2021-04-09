@@ -1,18 +1,17 @@
-/* eslint-disable */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+// eslint-disable-next-line node/no-extraneous-import
 import PropTypes from "prop-types";
-import {AuthenticationProvider, OidcSecure} from "@axa-fr/react-oidc-context";
+import { AuthenticationProvider, OidcSecure } from "@axa-fr/react-oidc-context";
 import "./App.css";
 import { Admin } from "react-admin";
-import { getOidcProps } from "./lib/authentication";
 import jsonServerProvider from "ra-data-json-server";
+import { getOidcProps } from "./lib/authentication";
 
 /**
  * Initial setup of react-admin home.
  * @returns {Component} react-admin for boilerplate
  */
-
-function App(){
-  
+function App() {
   // Create OIDC props to be used on the AuthenticationProvider
   const authenticationProviderProps = getOidcProps(
     "open-commerce-admin",
@@ -32,7 +31,7 @@ function App(){
 }
 
 App.propTypes = {
-  authenticationProviderProps: PropTypes.object,
+  authenticationProviderProps: PropTypes.object
 };
 
 export default App;
