@@ -25,6 +25,9 @@
         "node/no-unpublished-import": "off",
         "node/no-unpublished-require": "off",
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"]
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "node/no-extraneous-import": ["error", {
+          "allowModules": ["prop-types"]
+      }]
       }
   }
