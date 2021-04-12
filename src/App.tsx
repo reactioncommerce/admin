@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-// eslint-disable-next-line node/no-extraneous-import
 import PropTypes from "prop-types";
 import { AuthenticationProvider, OidcSecure } from "@axa-fr/react-oidc-context";
 import "./App.css";
