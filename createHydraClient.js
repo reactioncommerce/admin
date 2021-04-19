@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable no-console */
-// eslint-disable-next-line node/no-extraneous-require
 require("dotenv").config();
 const http = require("http");
 const envalid = require("envalid");
@@ -107,7 +106,6 @@ async function createHydraClient() {
       console.error(error.message);
       reject(11);
     });
-    console.log("what is req body?", req);
     req.end(bodyEncoded);
   });
 
