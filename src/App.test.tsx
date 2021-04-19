@@ -10,4 +10,3 @@ test("Renders react admin", async () => {
   const reactAdmin = screen.getByText(/Welcome to React-admin/i);
   await waitFor(() => expect(reactAdmin).toBeInTheDocument());
 });
-
