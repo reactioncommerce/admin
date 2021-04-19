@@ -1,4 +1,4 @@
-export default PostShow = (props) => (
+export default ProductShow = (props) => (
     <Show {...props}>
       <SimpleShowLayout>
         <TextField source="title" />

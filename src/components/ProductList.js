@@ -9,7 +9,7 @@ import {
 } from "react-admin";
 import ProductFilter from "./ProductFilter";
 
-export default class PostList extends React.Component {
+export default class ProductList extends React.Component {
   render() {
     return (
       <List {...this.props} filters={<ProductFilter />}>

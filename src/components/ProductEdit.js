@@ -1,3 +1,4 @@
+/* eslint-disable node/no-extraneous-import */
 import PropTypes from "prop-types";
 import {
   Edit,

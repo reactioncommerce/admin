@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { AuthenticationProvider, OidcSecure } from "@axa-fr/react-oidc-context";
 import { Admin, Resource } from "react-admin";
 import { getOidcProps } from "./lib/authentication";

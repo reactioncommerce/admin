@@ -27,21 +27,13 @@ export function getOidcProps(oidcClientId: string, oidcUrl: string, rootUrl: str
     loadUserInfo: true,
     triggerAuthFlow: true
   };
-<<<<<<< HEAD
-  console.log("oidcConfiguration", oidcConfiguration);
-=======
->>>>>>> 96ac46e90be9b9d81b8cd79cd42932a19c2818cd
   /* eslint-enable camelcase */
 
   return {
     configuration: oidcConfiguration,
     // NONE, ERROR, WARN, INFO, DEBUG
     // Change to DEBUG temporarily if you're debugging an issue with login/logout/auth
-<<<<<<< HEAD
-    loggerLevel: oidcLog.DEBUG,
-=======
     loggerLevel: oidcLog.NONE,
->>>>>>> 96ac46e90be9b9d81b8cd79cd42932a19c2818cd
     // These are components for which the @axa-fr/react-oidc-context package shows
     // default text if we don't override these. We don't really need them since in
     // our situation they're only shown for a second.
