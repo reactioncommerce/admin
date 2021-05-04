@@ -2,14 +2,19 @@
 import gql from "graphql-tag";
 
 export default gql`
-    query products($shopIds: [ID] = ["cmVhY3Rpb24vc2hvcDozRzZZWURKZnFvNmhHSE5lYg=="], $productIds: [ID], 
+    query products($shopIds: [ID]! , $productIds: [ID], 
     $query: String, $first: ConnectionLimitInt, $offset: Int) {
         products(shopIds: $shopIds, productIds: $productIds, query: $query, first: $first, offset: $offset) {
             nodes {
             _id
             title
+            slug
             currentProductHash
+            description
             isVisible
+            isDeleted
+            metaDescription    
+            originCountry
             media {
                 URLs {
                 thumbnail
@@ -17,6 +22,12 @@ export default gql`
             }
             pricing {
                 displayPrice
+                price
+            }
+            price{
+                max
+                min
+                range
             }
             publishedProductHash
             variants {

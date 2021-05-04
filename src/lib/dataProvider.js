@@ -5,14 +5,14 @@
 /* eslint-disable no-undef */
 import buildApolloClient, { buildQuery as buildQueryFactory } from "ra-data-graphql-simple";
 import { CREATE, GET_LIST } from "ra-core";
-import gql from "graphql-tag";
-import { setContext } from "@apollo/client/link/context";
-import { ApolloClient } from "apollo-client";
 import { ApolloLink } from "apollo-link";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import productsQuery from "../products/graphql/queries/products.js";
+import productQuery from "../products/graphql/queries/product.js";
 import createProduct from "../products/graphql/mutations/createProduct";
+import systemInformationQuery from "../products/graphql/queries/systemInformation";
+import shopQuery from "../products/graphql/queries/shop";
 
   const getGqlResource = (resource) => {
     switch (resource) {
@@ -24,6 +24,12 @@ import createProduct from "../products/graphql/mutations/createProduct";
 
       case "product":
         return "Product";
+
+      case "Settings":
+        return "Settings";
+
+      case "Shop":
+        return "Shop";
   
       default:
         throw new Error(`Unknown resource ${resource}`);
@@ -35,9 +41,9 @@ import createProduct from "../products/graphql/mutations/createProduct";
     return (type, resource, params) => {
       /* eslint-disable no-param-reassign*/
       if (type === "GET_LIST" && resource === "Products") {
-        params = { shopIds: [process.env.REACT_APP_SHOP_ID] };
         return {
           query: productsQuery,
+          variables: { shopIds: [process.env.REACT_APP_SHOP_ID] },
           parseResponse: ({ data }) => {
             const products = data.products.nodes;          
             products.forEach((product) => {
@@ -48,8 +54,19 @@ import createProduct from "../products/graphql/mutations/createProduct";
           }
         };
       }
+      if (type === "GET_ONE" && resource === "Products") {
+        return {
+          query: productQuery,
+          variables: { shopId: process.env.REACT_APP_SHOP_ID, productId: params.id },
+          parseResponse: ({ data }) => {
+            const { product } = data;          
+            product.id = product._id;
+            return { data: product };
+          }
+        };
+      }
       if (type === CREATE) {
-        const CreateProductInput = { product: { title: params.data }, shopId: process.env.REACT_APP_SHOP_ID };
+        // const CreateProductInput = { product: { title: params.data }, shopId: process.env.REACT_APP_SHOP_ID };
         return {
           query: createProduct,
           parseResponse: ({ data }) => {
@@ -63,10 +80,44 @@ import createProduct from "../products/graphql/mutations/createProduct";
         };
       }
 
+      if (type === "GET_LIST" && resource === "Settings") {
+        params = { shopIds: [process.env.REACT_APP_SHOP_ID] };
+        return {
+          query: systemInformationQuery,
+          parseResponse: ({ data }) => {
+            const appList = [];
+            const api = { id: "1", name: "API", version: data.systemInformation.apiVersion };
+            appList.push(api);
+            const mongo = { id: "2", name: "Mongo", version: data.systemInformation.mongoVersion.version };
+            appList.push(mongo);
+            const { plugins } = data.systemInformation;
+            let counter = 3;    
+            plugins.forEach((plugin) => {
+              plugin.id = counter;
+              counter += 1;
+              appList.push(plugin);
+            });
+            return { data: appList, total: appList.length };
+          }
+        };
+      }
+
+      if (type === "GET_LIST" && resource === "Shop") {
+        params = { shopIds: [process.env.REACT_APP_SHOP_ID] };
+        return {
+          query: shopQuery,
+          parseResponse: ({ data }) => {
+            data.shop.id = data.shop._id;
+            return { data: [data.shop], total: 1 };
+          }
+        };
+      }
+
       return buildQuery(type, resource, params);
     };
   };
 
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   export default () => {
     const httpLink = new HttpLink({ 
       uri: "http://localhost:3000/graphql"

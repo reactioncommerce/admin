@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { Component } from "react";
 import { AuthenticationProvider, OidcSecure } from "@axa-fr/react-oidc-context";
 import { Admin, Resource } from "react-admin";
@@ -5,8 +8,8 @@ import { getOidcProps } from "./lib/authentication";
 import "./App.css";
 import dataProviderFactory from "./lib/dataProvider";
 import ProductCreate from "./components/ProductCreate";
-import ProductEdit from "./components/ProductEdit";
 import ProductList from "./components/ProductList";
+import { ProductView as ProductShow } from "./components/ProductView";
 
 type LegacyDataProvider = (
   type: string,
@@ -15,7 +18,7 @@ type LegacyDataProvider = (
 ) => Promise<any>;
 
 class App extends Component<Record<string, any>, { dataProvider: LegacyDataProvider | any, ready: boolean }> {
-  constructor(props) {
+  constructor(props: Record<string, any> | Readonly<Record<string, any>>) {
     super(props);
     this.state = {
       dataProvider: (type: string, resource: string, params: any) => Promise.resolve(),
@@ -52,7 +55,9 @@ class App extends Component<Record<string, any>, { dataProvider: LegacyDataProvi
         <AuthenticationProvider {...authenticationProviderProps}>
           <OidcSecure>
             <Admin dataProvider={dataProvider}>
-              <Resource name="Products" list={ProductList} edit={ProductEdit} create={ProductCreate}/>
+              <Resource name="Products" list={ProductList} show={ProductShow}
+                create={ProductCreate}
+              />
             </Admin>
           </OidcSecure>
         </AuthenticationProvider>
