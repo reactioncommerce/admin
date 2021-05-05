@@ -11,8 +11,7 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import productsQuery from "../products/graphql/queries/products.js";
 import productQuery from "../products/graphql/queries/product.js";
 import createProduct from "../products/graphql/mutations/createProduct";
-import systemInformationQuery from "../products/graphql/queries/systemInformation";
-import shopQuery from "../products/graphql/queries/shop";
+
 
   const getGqlResource = (resource) => {
     switch (resource) {
@@ -79,40 +78,6 @@ import shopQuery from "../products/graphql/queries/shop";
           }
         };
       }
-
-      if (type === "GET_LIST" && resource === "Settings") {
-        params = { shopIds: [process.env.REACT_APP_SHOP_ID] };
-        return {
-          query: systemInformationQuery,
-          parseResponse: ({ data }) => {
-            const appList = [];
-            const api = { id: "1", name: "API", version: data.systemInformation.apiVersion };
-            appList.push(api);
-            const mongo = { id: "2", name: "Mongo", version: data.systemInformation.mongoVersion.version };
-            appList.push(mongo);
-            const { plugins } = data.systemInformation;
-            let counter = 3;    
-            plugins.forEach((plugin) => {
-              plugin.id = counter;
-              counter += 1;
-              appList.push(plugin);
-            });
-            return { data: appList, total: appList.length };
-          }
-        };
-      }
-
-      if (type === "GET_LIST" && resource === "Shop") {
-        params = { shopIds: [process.env.REACT_APP_SHOP_ID] };
-        return {
-          query: shopQuery,
-          parseResponse: ({ data }) => {
-            data.shop.id = data.shop._id;
-            return { data: [data.shop], total: 1 };
-          }
-        };
-      }
-
       return buildQuery(type, resource, params);
     };
   };
