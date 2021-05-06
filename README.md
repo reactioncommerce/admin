@@ -1,6 +1,6 @@
 
 ## Admin
-
+React application for managing Reaction Commerce stores.
 ## Getting Started
 
 Ensure you have reaction-hydra and reaction-identity services running. 
