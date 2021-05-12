@@ -12,6 +12,9 @@ import productsQuery from "../products/graphql/queries/products.js";
 import productQuery from "../products/graphql/queries/product.js";
 import createProduct from "../products/graphql/mutations/createProduct";
 
+const graphqlURL = process.env.PUBLIC_GRAPHQL_API_URL;
+const graphqlAPI = "http://localhost:3000/graphql";
+
 
   const getGqlResource = (resource) => {
     switch (resource) {
@@ -85,7 +88,7 @@ import createProduct from "../products/graphql/mutations/createProduct";
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   export default () => {
     const httpLink = new HttpLink({ 
-      uri: "http://localhost:3000/graphql"
+      uri: graphqlAPI
     });
 
     const authLink = new ApolloLink((operation, forward) => {
@@ -105,7 +108,7 @@ import createProduct from "../products/graphql/mutations/createProduct";
 
     return buildApolloClient({
       clientOptions: {
-        uri: "http://localhost:3000/graphql",
+        uri: graphqlURL,
         link: standardLink,
         cache: new InMemoryCache()
       },

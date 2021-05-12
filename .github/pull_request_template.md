@@ -1,5 +1,5 @@
-Resolves #issueNumber Impact: **breaking|critical|major|minor** Type:
-**feature|bugfix|performance|test|style|refactor|docs|chore**
+Resolves #issueNumber Impact: **breaking|critical|major|minor** 
+Type: **feature|bugfix|performance|test|style|refactor|docs|chore**
 
 ## Issue
 
