@@ -5,7 +5,7 @@ import { getOidcProps } from "./lib/authentication";
 import "./App.css";
 import dataProviderFactory from "./lib/dataProvider";
 import ProductCreate from "./components/ProductCreate";
-import ProductList from "./components/ProductList";
+import { ProductList } from "./components/ProductList";
 import { ProductView as ProductShow } from "./components/ProductView";
 
 type LegacyDataProvider = (
