@@ -4,7 +4,6 @@ import { Admin, Resource } from "react-admin";
 import { getOidcProps } from "./lib/authentication";
 import "./App.css";
 import dataProviderFactory from "./lib/dataProvider";
-import ProductCreate from "./components/ProductCreate";
 import { ProductList } from "./components/ProductList";
 import { ProductView as ProductShow } from "./components/ProductView";
 
@@ -52,9 +51,7 @@ class App extends Component<Record<string, unknown>, { dataProvider: LegacyDataP
         <AuthenticationProvider {...authenticationProviderProps}>
           <OidcSecure>
             <Admin dataProvider={dataProvider}>
-              <Resource name="Products" list={ProductList} show={ProductShow}
-                create={ProductCreate}
-              />
+              <Resource name="Products" list={ProductList} show={ProductShow} />
             </Admin>
           </OidcSecure>
         </AuthenticationProvider>
