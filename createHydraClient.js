@@ -106,7 +106,6 @@ async function createHydraClient() {
       console.error(error.message);
       reject(11);
     });
-
     req.end(bodyEncoded);
   });
 
@@ -114,4 +113,3 @@ async function createHydraClient() {
 }
 
 createHydraClient();
-

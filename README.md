@@ -1,4 +1,3 @@
-
 ## Admin
 
 ## Getting Started
@@ -11,6 +10,7 @@ Run the below commands to start the admin server :
 cp .env.example .env
 npm start
 ```
+
 ## Run Docker
 
 Production:

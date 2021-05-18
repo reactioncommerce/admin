@@ -11,16 +11,19 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum
+              "package-lock.json" }}
             - admin-v3-node-modules-{{ .Branch }}
       - run:
-          name: Install NPM 
+          name: Install NPM
           command: sudo npm i -g npm@latest
       - run:
           name: Install NPM dependencies
           command: npm -v && npm ci
       - save_cache:
-          key: admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          key:
+            admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum
+            "package-lock.json" }}
           paths:
             - node_modules
       - save_cache:
@@ -33,7 +36,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum
+              "package-lock.json" }}
             - admin-v3-node-modules-{{ .Branch }}
       - run:
           name: Lint JavaScript
@@ -45,7 +49,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+            - admin-v3-node-modules-{{ checksum "package.json" }}-{{ checksum
+              "package-lock.json" }}
             - admin-v3-node-modules-{{ .Branch }}
       - run:
           name: Run Unit Tests

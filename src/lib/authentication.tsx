@@ -13,7 +13,7 @@ const makeAbsolute = (relativeUrl: string, rootUrl: string) => {
  * @param {String} rootUrl Webapp root url
  * @returns {Object} An object containing props for the Oidc AuthenticationProvider
  */
-export function getOidcProps(oidcClientId: string, oidcUrl: string, rootUrl: string, ...otherProps: any[]) {
+export function getOidcProps(oidcClientId: string, oidcUrl: string, rootUrl: string, ...otherProps: unknown[]) {
   /* eslint-disable camelcase */
   const oidcConfiguration = {
     client_id: oidcClientId,
