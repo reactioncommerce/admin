@@ -34,7 +34,7 @@ const {
   })
 });
 
-const makeAbsolute = (relativeUrl, baseUrl = "http://localhost:4080") => {
+const makeAbsolute = (relativeUrl, baseUrl = HYDRA_REDIRECT_URL) => {
   const url = new Url(baseUrl, true);
   url.set("pathname", relativeUrl);
   return url.href;
@@ -106,7 +106,6 @@ async function createHydraClient() {
       console.error(error.message);
       reject(11);
     });
-
     req.end(bodyEncoded);
   });
 
@@ -114,4 +113,3 @@ async function createHydraClient() {
 }
 
 createHydraClient();
-
