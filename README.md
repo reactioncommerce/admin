@@ -1,5 +1,6 @@
 
 ## Admin
+React application for managing Open Commerce stores.
 
 ## Getting Started
 
