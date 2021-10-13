@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn run create-hydra-client && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -12,12 +12,17 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "prepare": "husky install",
-    "lint": "eslint .",
-    "create-hydra-client": "node createHydraClient.js"
+    "lint": "eslint ."
   },
   "dependencies": {
+    "@accounts/client": "^0.33.1",
+    "@accounts/client-password": "^0.32.2",
+    "@accounts/graphql-client": "^0.33.1",
     "@apollo/client": "^3.3.15",
     "@axa-fr/react-oidc-context": "^3.1.6",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/material": "^5.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -35,6 +40,7 @@
     "graphql": "^15.5.0",
     "graphql-tag": "^2.12.0",
     "http": "0.0.1-security",
+    "mdi-material-ui": "^6.22.1",
     "oidc-client": "^1.11.5",
     "ra-core": "^3.15.1",
     "ra-data-graphql-simple": "^3.13.2",

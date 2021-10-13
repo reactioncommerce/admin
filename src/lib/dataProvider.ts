@@ -87,12 +87,17 @@ export default () => {
   });
 
   const authLink = new ApolloLink((operation, forward) => {
-    operation.setContext(() => ({
-      headers: {
-        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`
+    operation.setContext(() => {
+      const accessToken = localStorage.getItem("accounts:accessToken");
+      if (accessToken) {
+        return {
+          headers: {
+            Authorization: `Bearer ${accessToken}`
+          }
+        };
       }
-    }));
-
+      return {};
+    });
     return forward(operation);
   });
 

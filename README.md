@@ -2,8 +2,6 @@
 
 ## Getting Started
 
-Ensure you have reaction-hydra and reaction-identity services running. 
-
 Run the below commands to start the admin server :
 
 ```bash
